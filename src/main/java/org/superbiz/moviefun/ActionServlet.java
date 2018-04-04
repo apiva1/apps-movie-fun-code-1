@@ -17,6 +17,8 @@
 package org.superbiz.moviefun;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -29,6 +31,8 @@ import java.util.List;
 /**
  * @version $Revision$ $Date$
  */
+//@WebServlet(urlPatterns = "/moviefun")
+@Component
 public class ActionServlet extends HttpServlet {
 
     private static final long serialVersionUID = -5832176047021911038L;
@@ -44,6 +48,7 @@ public class ActionServlet extends HttpServlet {
     }
 
     @Override
+    @Transactional
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
     }
