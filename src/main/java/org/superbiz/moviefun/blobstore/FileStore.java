@@ -1,14 +1,7 @@
 package org.superbiz.moviefun.blobstore;
 
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.io.*;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Optional;
-
-import static java.lang.ClassLoader.getSystemResource;
 
 
 public class FileStore implements BlobStore {
@@ -31,7 +24,7 @@ public class FileStore implements BlobStore {
 
         int ch;
 
-        File destDir = new File(destDirectory + "/" + blob.name);
+        File destDir = new File(destDirectory + "/covers/" + blob.name);
         destDir.createNewFile();
         System.out.println("created file" + destDir);
 
@@ -51,7 +44,7 @@ public class FileStore implements BlobStore {
     @Override
     public Optional<Blob> get(String name) throws IOException {
 
-            File coverFile = new File(destDirectory + "/" + name);
+            File coverFile = new File(destDirectory + "/covers/" + name);
             System.out.println("Returned cover file = " + coverFile.toString() + " : " + coverFile.getPath() + " : " );
             //coverFilePath = Paths.get(getSystemResource(coverFile.toString()).toURI());
 
